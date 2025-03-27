@@ -58,9 +58,9 @@ Hinweis: Wenn der Titel nicht extrahiert werden kann, erscheint nur die URL.
 
 ## 🔧 Nächste Schritte (To Do)
 
-- [ ] Webhook-Benachrichtigung (z. B. Discord)
+- [ ] Webhook-Benachrichtigung (Discord, GitHub Webhooks)
 - [ ] Fehler besser handhaben & anzeigen
-- [ ] 
+- [ ] Bot-Tarnung (User-Agent, Verzögerungen)
 
 ---
 
@@ -77,7 +77,6 @@ Hinweis: Wenn der Titel nicht extrahiert werden kann, erscheint nur die URL.
 - JSON-Serialisierung in Go
 - Umgang mit Structs, Maps, Slices und Pointern
 - URL-Encoding & DuckDuckGo-Redirects verstehen
-- Besuchsreihenfolge per Slice erhalten
 
 ---
 

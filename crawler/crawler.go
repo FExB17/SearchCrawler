@@ -14,7 +14,12 @@ type PageResult struct {
 }
 
 func Crawl(urls []string) {
-	c := colly.NewCollector()
+	c := colly.NewCollector(
+		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+			"AppleWebKit/537.36 (KHTML, like Gecko) " +
+			"Chrome/120.0.0.0 Safari/537.36"),
+	)
+
 	results := make(map[string]*PageResult)
 
 	c.OnRequest(func(r *colly.Request) {
