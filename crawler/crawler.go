@@ -9,40 +9,51 @@ import (
 )
 
 type PageResult struct {
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
 	URL   string `json:"url"`
 }
 
 func Crawl(urls []string) {
 	c := colly.NewCollector()
-	var results []PageResult
-	currentUrl := ""
+	results := make(map[string]*PageResult)
+
+	c.OnRequest(func(r *colly.Request) {
+		url := r.URL.String()
+		fmt.Println("Besuche:", url)
+
+		if _, exists := results[url]; !exists {
+			results[url] = &PageResult{
+				URL: url,
+			}
+		}
+	})
 
 	c.OnHTML("title", func(e *colly.HTMLElement) {
 		title := strings.TrimSpace(e.Text)
 		if title == "" {
-			title = "Kein Titel gefunden"
+			return
 		}
-		results = append(results, PageResult{
-			Title: title,
-			URL:   currentUrl,
-		})
+		url := e.Request.URL.String()
+		if entry, exists := results[url]; exists {
+			entry.Title = title
+		}
 		fmt.Printf("Titel: %s\n", title)
 		fmt.Println("────────────────────────────────────────")
-	})
-
-	c.OnRequest(func(r *colly.Request) {
-		currentUrl = r.URL.String()
-		fmt.Println("Besuche:", currentUrl)
 	})
 
 	for _, rawUrl := range urls {
 		if err := c.Visit(rawUrl); err != nil {
 			fmt.Println("Fehler beim Besuch:", rawUrl)
+			fmt.Println("────────────────────────────────────────")
 		}
 	}
 
 	c.Wait()
+
+	final := make([]PageResult, 0, len(results))
+	for _, entry := range results {
+		final = append(final, *entry)
+	}
 
 	file, err := os.Create("results.json")
 	if err != nil {
