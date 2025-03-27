@@ -43,7 +43,7 @@ func Crawl(urls []string) {
 			return
 		}
 		url := e.Request.URL.String()
-		if entry, exists := results[url]; exists {
+		if entry, exists := results[url]; exists && entry.Title == "" {
 			entry.Title = title
 		}
 		fmt.Printf("Titel: %s\n", title)

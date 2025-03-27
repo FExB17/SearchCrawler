@@ -1,6 +1,6 @@
 {
-  "https://en.zalando.de/": {
-    "url": "https://en.zalando.de/"
+  "https://en.zalando.de/mens-shoes/": {
+    "url": "https://en.zalando.de/mens-shoes/"
   },
   "https://en.zalando.de/shoes/": {
     "url": "https://en.zalando.de/shoes/"
@@ -8,27 +8,27 @@
   "https://en.zalando.de/womens-shoes/": {
     "url": "https://en.zalando.de/womens-shoes/"
   },
+  "https://www.zalando.at/": {
+    "title": "Schuhe, Mode und Accessoires online kaufen | ZALANDO",
+    "url": "https://www.zalando.at/"
+  },
   "https://www.zalando.at/schuh/": {
     "url": "https://www.zalando.at/schuh/"
   },
   "https://www.zalando.ch/herrenschuhe/": {
-    "title": "Zurück",
+    "title": "Schuhe für Herren online shoppen | Zalando",
     "url": "https://www.zalando.ch/herrenschuhe/"
   },
-  "https://www.zalando.ch/schuhe/": {
-    "title": "Zurück",
-    "url": "https://www.zalando.ch/schuhe/"
-  },
   "https://www.zalando.de/": {
-    "title": "Payment",
+    "title": "Schuhe, Mode und Accessoires online kaufen | ZALANDO",
     "url": "https://www.zalando.de/"
   },
   "https://www.zalando.de/damenschuhe/": {
-    "title": "Zurück",
+    "title": "Schuhe für Damen online kaufen| ZALANDO",
     "url": "https://www.zalando.de/damenschuhe/"
   },
   "https://www.zalando.de/schuhe/": {
-    "title": "Zurück",
+    "title": "Schuhe online kaufen | Upgrade für deinen Schuhschrank | ZALANDO",
     "url": "https://www.zalando.de/schuhe/"
   },
   "https://zalando.com/": {
