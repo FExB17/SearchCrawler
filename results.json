@@ -1,32 +1,26 @@
 {
-  "https://eschuhe.de/": {
-    "url": "https://eschuhe.de/"
+  "https://en.zalando.de/": {
+    "url": "https://en.zalando.de/"
   },
-  "https://www.clarks.com/de-de": {
-    "title": "Clarks® Shoes Offizielle Website | Schuhe für Herren, Damen und Kinder kaufen",
-    "url": "https://www.clarks.com/de-de"
+  "https://en.zalando.de/shoes/": {
+    "url": "https://en.zalando.de/shoes/"
   },
-  "https://www.deichmann.com/de-de/": {
-    "title": "Schuhe günstig in Top-Qualität kaufen | DEICHMANN",
-    "url": "https://www.deichmann.com/de-de/"
+  "https://en.zalando.de/womens-shoes/": {
+    "url": "https://en.zalando.de/womens-shoes/"
   },
-  "https://www.otto.de/schuhe/": {
-    "title": "Schuhe online kaufen | OTTO",
-    "url": "https://www.otto.de/schuhe/"
+  "https://www.zalando.at/schuh/": {
+    "url": "https://www.zalando.at/schuh/"
   },
-  "https://www.schuhcenter.de/": {
-    "title": "Schuhe ❤️ einfach günstig online kaufen",
-    "url": "https://www.schuhcenter.de/"
+  "https://www.zalando.ch/herrenschuhe/": {
+    "title": "Zurück",
+    "url": "https://www.zalando.ch/herrenschuhe/"
   },
-  "https://www.schuhe.de/": {
-    "title": "schuhe.de | Der große Online Shop für modische Schuhe",
-    "url": "https://www.schuhe.de/"
-  },
-  "https://www.shoe4you.com/": {
-    "url": "https://www.shoe4you.com/"
+  "https://www.zalando.ch/schuhe/": {
+    "title": "Zurück",
+    "url": "https://www.zalando.ch/schuhe/"
   },
   "https://www.zalando.de/": {
-    "title": "Dein Benutzerkonto",
+    "title": "Payment",
     "url": "https://www.zalando.de/"
   },
   "https://www.zalando.de/damenschuhe/": {
@@ -36,5 +30,8 @@
   "https://www.zalando.de/schuhe/": {
     "title": "Zurück",
     "url": "https://www.zalando.de/schuhe/"
+  },
+  "https://zalando.com/": {
+    "url": "https://zalando.com/"
   }
 }

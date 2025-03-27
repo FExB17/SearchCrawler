@@ -26,6 +26,10 @@ func Crawl(urls []string) {
 		url := r.URL.String()
 		fmt.Println("Besuche:", url)
 
+		r.Headers.Set("Accept-Language", "de-DE,de;q=0.9")
+		r.Headers.Set("Referer", "https://www.google.com/")
+		r.Headers.Set("DNT", "1")
+
 		if _, exists := results[url]; !exists {
 			results[url] = &PageResult{
 				URL: url,
