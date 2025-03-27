@@ -1,44 +1,28 @@
-# 🔎 SearchCrawler
+# SearchCrawler
 
-Ein einfacher Webcrawler in Go, der über DuckDuckGo nach einem Begriff sucht, die gefundenen Webseiten besucht, deren Titel extrahiert und alle Ergebnisse als JSON-Datei speichert.
+Ein einfaches Go-Tool, das Suchergebnisse über DuckDuckGo abruft, die verlinkten Seiten besucht und versucht, den Titel der jeweiligen Webseite auszulesen. Die Ergebnisse werden in einer JSON-Datei gespeichert.
 
----
+## Funktionsweise
 
-## 📦 Features
+Das Programm:
 
-- Suchbegriff über DuckDuckGo
-- Besuch der gefundenen Webseiten
-- Titel-Extraktion (HTML `<title>`)
-- JSON-Ausgabe: `url` + optional `title`
-- Ergebnisse werden in Besuchsreihenfolge gespeichert
-- Bestehende `results.json` wird immer überschrieben
+1. sucht über DuckDuckGo nach einem Begriff (Text wird per URL-Query übergeben),
+2. extrahiert die tatsächlichen Ziel-URLs (die DuckDuckGo über Redirects maskiert),
+3. besucht jede Seite mit einem realistischen User-Agent,
+4. liest den `<title>`-Tag der Seite (wenn möglich),
+5. speichert URL + Titel als Liste in eine `results.json`.
 
----
+Die Ergebnisse erscheinen in der Reihenfolge, in der sie besucht wurden.
 
-## 📁 Projektstruktur
-
-```
-.
-├── main.go           # Einstiegspunkt, ruft Suche & Crawler auf
-├── search.go         # DuckDuckGo-Suche + Link-Parsing
-├── crawler.go        # Besucht Seiten & extrahiert Titel
-├── results.json      # JSON-Ausgabe (automatisch erstellt)
-├── go.mod / go.sum   # Abhängigkeiten (Colly etc.)
-```
-
----
-
-## ▶️ Verwendung
+## Verwendung
 
 ```bash
 go run main.go "schuhe"
 ```
 
-Das Programm sucht bei DuckDuckGo nach dem Begriff `schuhe`, besucht jede relevante Seite und speichert die Ergebnisse in `results.json`.
+Das Skript erstellt oder überschreibt eine Datei namens `results.json` im Projektverzeichnis.
 
----
-
-## 📄 Beispielausgabe (`results.json`)
+## Beispielausgabe
 
 ```json
 [
@@ -52,34 +36,19 @@ Das Programm sucht bei DuckDuckGo nach dem Begriff `schuhe`, besucht jede releva
 ]
 ```
 
-Hinweis: Wenn der Titel nicht extrahiert werden kann, erscheint nur die URL.
+Wenn kein Titel extrahiert werden konnte, bleibt das Feld leer oder fehlt.
 
----
+## Technisches
 
-## 🔧 Nächste Schritte (To Do)
+- Sprache: Go
+- HTTP/Scraping: [Colly](https://github.com/gocolly/colly)
+- JSON-Encoding über Standardbibliothek
+- Einfache Fehlerbehandlung und Logging per Konsole
 
-- [ ] Webhook-Benachrichtigung (Discord, GitHub Webhooks)
-- [ ] Fehler besser handhaben & anzeigen
-- [ ] Bot-Tarnung (User-Agent, Verzögerungen)
+## Hinweise
 
----
+Nicht alle Seiten erlauben Bot-Zugriffe. Manche blockieren Crawler oder liefern keine Inhalte ohne JavaScript. Das Tool ist nicht dafür gedacht, intensiv zu scrapen oder Daten großflächig zu sammeln – es dient eher als Lernprojekt oder für vereinfachte Recherchezwecke.
 
-## 📚 Technologien
+## Lizenz / Autor
 
-- [Go](https://golang.org/)
-- [Colly](https://github.com/gocolly/colly) – Web Scraping Framework
-
----
-
-## 🧠 Gelernt beim Projekt
-
-- Web-Scraping mit Colly
-- JSON-Serialisierung in Go
-- Umgang mit Structs, Maps, Slices und Pointern
-- URL-Encoding & DuckDuckGo-Redirects verstehen
-
----
-
-## 👨‍💻 Autor
-
-Furkan – Projekt zum Lernen von Go & Webscraping  
+Keine besondere Lizenz. Nur zu Lernzwecken. Erstellt von Furkan.
