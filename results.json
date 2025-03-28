@@ -1,50 +1,51 @@
 {
   "https://eschuhe.de/": {
-    "url": "https://eschuhe.de/",
-    "bot_detection": false
+    "url": "",
+    "bot detection": true
   },
   "https://www.clarks.com/de-de": {
     "title": "Clarks® Shoes Offizielle Website | Schuhe für Herren, Damen und Kinder kaufen",
     "url": "https://www.clarks.com/de-de",
-    "bot_detection": false
+    "bot detection": false
   },
   "https://www.deichmann.com/de-de/": {
     "title": "Schuhe günstig in Top-Qualität kaufen | DEICHMANN",
     "url": "https://www.deichmann.com/de-de/",
-    "bot_detection": false
+    "bot detection": false
   },
   "https://www.otto.de/schuhe/": {
     "title": "Schuhe online kaufen | OTTO",
     "url": "https://www.otto.de/schuhe/",
-    "bot_detection": false
+    "bot detection": false
+  },
+  "https://www.schuhcenter.de/": {
+    "title": "Schuhe ❤️ einfach günstig online kaufen",
+    "url": "https://www.schuhcenter.de/",
+    "bot detection": false
   },
   "https://www.schuhe-lueke.com/": {
     "title": "Buy shoes at our Schuhe Lüke Online-Shop",
     "url": "https://www.schuhe-lueke.com/",
-    "bot_detection": false
+    "bot detection": false
   },
   "https://www.schuhe.de/": {
     "title": "schuhe.de | Der große Online Shop für modische Schuhe",
     "url": "https://www.schuhe.de/",
-    "bot_detection": false
-  },
-  "https://www.shoe4you.com/": {
-    "url": "https://www.shoe4you.com/",
-    "bot_detection": false
+    "bot detection": false
   },
   "https://www.zalando.de/": {
     "title": "Schuhe, Mode und Accessoires online kaufen | ZALANDO",
     "url": "https://www.zalando.de/",
-    "bot_detection": false
+    "bot detection": false
   },
   "https://www.zalando.de/damenschuhe/": {
     "title": "Schuhe für Damen online kaufen| ZALANDO",
     "url": "https://www.zalando.de/damenschuhe/",
-    "bot_detection": false
+    "bot detection": false
   },
   "https://www.zalando.de/schuhe/": {
     "title": "Schuhe online kaufen | Upgrade für deinen Schuhschrank | ZALANDO",
     "url": "https://www.zalando.de/schuhe/",
-    "bot_detection": false
+    "bot detection": false
   }
 }

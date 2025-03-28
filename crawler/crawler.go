@@ -1,7 +1,6 @@
 package crawler
 
 import (
-	"SearchCrawler/tools"
 	"encoding/json"
 	"fmt"
 	"github.com/gocolly/colly/v2"
@@ -12,7 +11,7 @@ import (
 type PageResult struct {
 	Title        string `json:"title,omitempty"`
 	URL          string `json:"url"`
-	BotDetection bool   `json:"bot_detection"`
+	BotDetection bool   `json:"bot detection"`
 }
 
 func Crawl(urls []string) {
@@ -54,18 +53,13 @@ func Crawl(urls []string) {
 	})
 
 	for _, rawUrl := range urls {
-		detected := tools.CheckRobots(rawUrl)
-		if _, exists := results[rawUrl]; !exists {
-			results[rawUrl] = &PageResult{
-				URL:          rawUrl,
-				BotDetection: detected,
-			}
-		} else {
-			results[rawUrl].BotDetection = detected
-		}
-		if err := c.Visit(rawUrl); err != nil {
+		err := c.Visit(rawUrl)
+		if err != nil {
 			fmt.Println("Fehler beim Besuch:", rawUrl)
 			fmt.Println("────────────────────────────────────────")
+			results[rawUrl] = &PageResult{
+				BotDetection: true,
+			}
 		}
 	}
 
@@ -88,6 +82,7 @@ func Crawl(urls []string) {
 	}()
 
 	encoder := json.NewEncoder(file)
+	// wie pretty print prefix jeder Zeile und Einrückung
 	encoder.SetIndent("", "  ")
 	if err := encoder.Encode(results); err != nil {
 		fmt.Println("Fehler beim Schreiben in JSON:", err)
