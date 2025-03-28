@@ -27,10 +27,10 @@ func Search(searchTerm string) []string {
 	var results []string
 	c := colly.NewCollector()
 
-	// Handler für Suchergebnisse
 	c.OnHTML("a.result__a", func(e *colly.HTMLElement) {
 		rawLink := e.Attr("href")
 		cleanLink, _ := convertRawToLink(rawLink)
+		// keine Werbung oder Tracking-Links als Ergebnis weitergeben
 		if strings.Contains(cleanLink, "duckduckgo.com/y.js") ||
 			strings.Contains(cleanLink, "click_metadata") ||
 			strings.Contains(cleanLink, "bing.com/aclick") {

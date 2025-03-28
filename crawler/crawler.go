@@ -1,6 +1,7 @@
 package crawler
 
 import (
+	"SearchCrawler/tools"
 	"encoding/json"
 	"fmt"
 	"github.com/gocolly/colly/v2"
@@ -9,12 +10,14 @@ import (
 )
 
 type PageResult struct {
-	Title string `json:"title,omitempty"`
-	URL   string `json:"url"`
+	Title        string `json:"title,omitempty"`
+	URL          string `json:"url"`
+	BotDetection bool   `json:"bot_detection"`
 }
 
 func Crawl(urls []string) {
 	c := colly.NewCollector(
+		// User-Agent setzen, um wie ein Browser zu erscheinen
 		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
 			"AppleWebKit/537.36 (KHTML, like Gecko) " +
 			"Chrome/120.0.0.0 Safari/537.36"),
@@ -25,7 +28,7 @@ func Crawl(urls []string) {
 	c.OnRequest(func(r *colly.Request) {
 		url := r.URL.String()
 		fmt.Println("Besuche:", url)
-
+		// Header setzen, um wie ein Browser zu erscheinen
 		r.Headers.Set("Accept-Language", "de-DE,de;q=0.9")
 		r.Headers.Set("Referer", "https://www.google.com/")
 		r.Headers.Set("DNT", "1")
@@ -51,6 +54,15 @@ func Crawl(urls []string) {
 	})
 
 	for _, rawUrl := range urls {
+		detected := tools.CheckRobots(rawUrl)
+		if _, exists := results[rawUrl]; !exists {
+			results[rawUrl] = &PageResult{
+				URL:          rawUrl,
+				BotDetection: detected,
+			}
+		} else {
+			results[rawUrl].BotDetection = detected
+		}
 		if err := c.Visit(rawUrl); err != nil {
 			fmt.Println("Fehler beim Besuch:", rawUrl)
 			fmt.Println("────────────────────────────────────────")
@@ -69,7 +81,11 @@ func Crawl(urls []string) {
 		fmt.Println("Fehler beim Erstellen der JSON-Datei:", err)
 		return
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			fmt.Println("Fehler beim Schließen der JSON-Datei:", err)
+		}
+	}()
 
 	encoder := json.NewEncoder(file)
 	encoder.SetIndent("", "  ")
